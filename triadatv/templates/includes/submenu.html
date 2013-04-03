@@ -1,0 +1,7 @@
+<div class="left_column">
+	<ul class="submenu">
+		{% for sub_node in current_root_node.get_children %}
+			{% if sub_node.menu_visible %}<li{% if sub_node == current_node %} class="active"{% endif %}><a href="{% if sub_node != current_node %}{{ sub_node.get_absolute_url }}{% endif %}">{{ sub_node.menu|safe }}</a></li>{% endif %}
+		{% endfor %}
+	</ul>
+</div>

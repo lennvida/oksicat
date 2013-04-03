@@ -5,43 +5,44 @@ import os.path
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', False))
 TEMPLATE_DEBUG = DEBUG
 
+SITE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 SITE_NAME = 'triadatv'
+
+KICK_YEAR = 2013
 
 SITE_ID = 1
 
-SITE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EMAIL_SUBJECT_PREFIX = u'[%s] ' % SITE_NAME
 
-
-
-
-MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(SITE_ROOT, 'media')
+MEDIA_URL = '/media/'
+LOCAL_MEDIA_ROOT = MEDIA_ROOT
+LOCAL_MEDIA_URL = MEDIA_URL
 
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 STATIC_URL = '/static/'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 STATICFILES_DIRS = (
-    ('triadatv', os.path.join(SITE_ROOT, 'triadatv', 'static')),
+    (os.path.join(SITE_ROOT, 'triadatv', 'static')),
 )
 STATIC_ROOT = os.path.join(SITE_ROOT, 'www', 'static')
 
+DEFAULT_FROM_EMAIL = 'noreply@triadatv.ru'
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
-
-
-ADMINS = (
-    (os.environ.get('DJANGO_ADMIN_NAME', 'Admin'), os.environ.get('DJANGO_ADMIN_EMAIL', 'bugs@triadatv.ru')),
-)
+ADMINS = ((os.environ.get('DJANGO_ADMIN_NAME', 'Admin'),
+           os.environ.get('DJANGO_ADMIN_EMAIL', 'bugs@triadatv.ru')),)
 if DEBUG :
     MANAGERS = ADMINS
 else:
-    MANAGERS = (
-        (os.environ.get('DJANGO_MANAGER_NAME', 'FeedBack'), os.environ.get('DJANGO_MANAGER_EMAIL', 'feedback@triadatv.ru')),
-    )
-
-
-
+    MANAGERS = ((
+        os.environ.get('DJANGO_MANAGER_NAME', 'Feedback'),
+        os.environ.get('DJANGO_MANAGER_EMAIL', 'feedback@triadatv.ru')
+    ),)
 
 DATABASE_SQLITE = {
     'ENGINE': 'django.db.backends.sqlite3',
@@ -51,16 +52,13 @@ DATABASES = {
     'default': DATABASE_SQLITE
 }
 
-
-
-
 TIME_ZONE = 'Europe/Moscow'
 
 LANGUAGE_CODE = 'ru-RU'
 
 USE_I18N = True
 
-USE_L10N = True
+APPEND_SLASH = True
 
 DATE_FORMAT = '%Y-%m-%d'
 DATE_INPUT_FORMATS = (
@@ -75,9 +73,6 @@ TIME_INPUT_FORMATS = (
     '%H:%M:%S',
 )
 
-
-
-
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
@@ -89,13 +84,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.static',
     # 'django.contrib.messages.context_processors.messages',
+
+    'triadatv.structure.context_processors.current_node',
+    'triadatv.structure.context_processors.site_name',
 )
 TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT, 'triadatv', 'templates').replace('\\', '/'),
 )
-
-
-
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -105,6 +100,21 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'triadatv.core.middleware.RequestSiteMiddleware',
+    'triadatv.structure.middleware.CurrentNodeMiddleware',
+)
+
+THUMBNAIL_DIR = os.path.join(MEDIA_ROOT, 'tmp')
+THUMBNAIL_URL = MEDIA_URL + 'tmp/'
+
+FILE_UPLOAD_HANDLERS = (
+    'triadatv.core.upload_handlers.MemoryFileUploadHandler',
+    'triadatv.core.upload_handlers.TemporaryFileUploadHandler'
+)
+
+FIXTURE_DIRS = (
+    os.path.join(SITE_ROOT, 'fixtures'),
 )
 
 ROOT_URLCONF = 'triadatv.urls'
@@ -120,16 +130,17 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     # 'django.contrib.messages',
     'django.contrib.sessions',
-    # 'django.contrib.sites',
+    'django.contrib.sites',
+    'django.contrib.redirects',
     'django.contrib.staticfiles',
 
+    'mptt',
     'south',
+    'tinymce',
 
     'triadatv.core',
+    'triadatv.structure',
 )
-
-
-
 
 SECRET_KEY = 'z2tb%d!ev#94hq$=%da(&amp;0+21^9o+_ri-&amp;t!%ej=%9)@n54lx3'
 

@@ -1,0 +1,36 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="ru">
+	<head>{% block head %}
+
+		<title>{% block title %}{% if current_node.self_fields.title %}{{ current_node.self_fields.title|safe }}{% else %}{{ current_node.get_full_title|safe }}{% endif %}{% endblock %}</title>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="description" content="{% block description %}{% if current_node.self_fields.description %}{{ current_node.self_fields.description }}{% else %}{{ current_node.content|safe|striptags|slice:"0:184" }}...{% endif %}{% endblock %}">
+		<meta name="keywords" content="{% if current_node.self_fields.keywords %}{{ current_node.self_fields.keywords }}{% else %}{{ current_node.get_full_keywords|safe }}{% endif %}">
+
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.base.css' %}">
+
+		{% block extrahead %}{% endblock %}
+
+	{% endblock %}</head>
+	<body>
+		{% block content %}
+
+			<header>{% block header %}
+				<a href="/"><img src="{% static 'images/logo.png' %}" alt="Триада-тв" /></a>
+
+				{% include 'includes/menu.html' %}
+
+			{% endblock %}</header>
+
+			<div class="body">{% block body %}{% endblock %}</div>
+
+			<footer>{% block footer %}{% include 'includes/footer.html' %}{% endblock %}</footer>
+
+			{% block javascript %}{% endblock %}
+
+		{% endblock %}
+	</body>
+</html>
