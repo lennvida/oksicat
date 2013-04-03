@@ -17,4 +17,8 @@ Install
 	pip install ir reqs.txt
 	./manage.py syncdb
 	./manage.py migrate
+
+Use
+===
+	source bin/activate
 	./manage.py runserver
