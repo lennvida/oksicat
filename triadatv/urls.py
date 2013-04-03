@@ -11,6 +11,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^', include('triadatv.core.urls')),
 
+    url(r'^news/', include('triadatv.news.urls')),
+
     url(r'^404/', lambda request: TemplateView.as_view(template_name="404.html")(request)),
     url(r'^500/', lambda request: TemplateView.as_view(template_name="500.html")(request)),
 

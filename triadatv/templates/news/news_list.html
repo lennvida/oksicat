@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+{% block body %}
+	<h1 class="node_title">{{ current_node.title|safe }}</h1>
+	<div class="node_content">
+		<div class="left column">
+			<ul class="submenu">
+				{% for year in year_list %}
+					<li{% if year.year == news_list.0.date.year %} class="active"{% endif %}><a href="{% if year.year != news_list.0.date.year %}{% url news_list_year year.year %}{% endif %}">{{ year.year }}</a></li>
+				{% endfor %}
+			</ul>
+		</div><!--
+
+		--><div class="content column">{% for news in news_list %}
+			<div>
+				<p>{{ news.date }}</p>
+				<h2><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h2>
+				<p>{{ news.anons }}</p>
+			</div>
+		{% endfor %}</div>
+	</div>
+{% endblock %}

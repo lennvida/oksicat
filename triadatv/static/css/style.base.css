@@ -33,14 +33,14 @@ header {
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	user-select: none;
-	margin: 20px 0;
+	margin:30px 0 0;
 }
 
 menu {
 	position: relative;
 	height: 45px;
 	width: 100%;
-	margin: 10px 0;
+	margin: 10px 0 0;
 	padding: 10px 0;
 	border-radius: 2px;
 }
@@ -78,7 +78,14 @@ menu a.active {
 
 .body,
 footer {
-	margin: 10px 20px;
+	margin: 30px 20px 0;
+}
+
+h1 {
+	margin-bottom: 20px;
+	font-weight: bold;
+	color: #999;
+	text-shadow: 0 -1px 0 #777;
 }
 
 .column {

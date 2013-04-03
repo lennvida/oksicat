@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import re
+
 from django.db import models
 from django.db.models.query import QuerySet
 
@@ -29,3 +31,12 @@ class PublishModel(models.Model):
     
     class Meta:
         abstract = True
+
+    @models.permalink
+    def get_absolute_url(self):
+        s = self.__module__
+        r = r'.(\w+).models$'
+        app = re.findall(r, s)[0].lower()
+        cls = self.__class__.__name__.lower()
+        print '%s_%s_detail' % (app, cls, )
+        return ('%s_%s_detail' % (app, cls, ), [str(self.id)])

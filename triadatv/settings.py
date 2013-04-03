@@ -60,9 +60,9 @@ USE_I18N = True
 
 APPEND_SLASH = True
 
-DATE_FORMAT = '%Y-%m-%d'
+DATE_FORMAT = 'Y F d'
 DATE_INPUT_FORMATS = (
-    '%d/%m/%Y',
+    'd/m/Y',
 )
 DATETIME_FORMAT = '%Y-%m-%d, %H:%M:%S'
 DATETIME_INPUT_FORMATS = (
@@ -140,6 +140,7 @@ INSTALLED_APPS = (
 
     'triadatv.core',
     'triadatv.structure',
+    'triadatv.news',
 )
 
 SECRET_KEY = 'z2tb%d!ev#94hq$=%da(&amp;0+21^9o+_ri-&amp;t!%ej=%9)@n54lx3'
