@@ -62,13 +62,13 @@ APPEND_SLASH = True
 
 DATE_FORMAT = 'Y F d'
 DATE_INPUT_FORMATS = (
-    'd/m/Y',
+    '%d/%m/%Y',
 )
-DATETIME_FORMAT = '%Y-%m-%d, %H:%M:%S'
+DATETIME_FORMAT = 'Y-m-d, H:M:S'
 DATETIME_INPUT_FORMATS = (
     '%H:%M:%S %d/%m/%Y',
 )
-TIME_FORMAT = '%H:%M:%S'
+TIME_FORMAT = 'H:M:S'
 TIME_INPUT_FORMATS = (
     '%H:%M:%S',
 )
