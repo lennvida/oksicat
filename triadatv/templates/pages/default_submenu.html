@@ -1,13 +1,7 @@
-{% extends "base.html" %}
+{% extends "layer_01.html" %}
 
-{% load static from staticfiles %}
+{% block content %}
+	{% include 'includes/submenu.html' %}
 
-{% block body %}
-	<h1 class="node_title">{{ current_node.title|safe }}</h1>
-	<div class="node_content">
-
-		{% include 'includes/submenu.html' %}
-
-		--><div class="content column">{{ current_node.content|safe }}</div>
-	</div>
+	--><div class="content column">{{ current_node.content|safe }}</div>
 {% endblock %}

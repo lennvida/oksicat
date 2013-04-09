@@ -1,0 +1,42 @@
+{% extends "layer_01.html" %}
+
+{% block content %}
+    <div class="content"2>
+        <div id="map_canvas" style="width:990px; height:480px;"></div>
+        {{ current_node.content|safe }}
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        function initialize() {
+
+            var mapOptions = {
+                center: new google.maps.LatLng(54.98426, 82.90750),
+                zoom: 8,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+            var icon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAiklEQVR42mNgQIAoIF4NxGegdCCSHAMzEC+NUlH5v9rF5f+ZoCAwHaig8B8oPhOmKC1NU/P//7Q0DByrqgpSGAtSdOCAry9WRXt9fECK9oIUPXwYFYVV0e2ICJCi20SbFAuyG5uiECUlkKIQmOPng3y30d0d7Lt1bm4w301jQAOgcNoIDad1yOEEAFm9fSv/VqtJAAAAAElFTkSuQmCC';
+
+            {% for marker in marker_list %}var marker{{ marker.id }} = new google.maps.Marker({
+                position: new google.maps.LatLng({{ marker.x }}, {{ marker.y }}),
+                map: map,
+                title:"{{ marker.caption }}",
+                animation: google.maps.Animation.DROP,
+                icon: icon,
+                draggable: false,
+            });{% endfor %}
+        }
+
+        function loadScript() {
+          var script = document.createElement("script");
+          script.type = "text/javascript";
+          script.src = "http://maps.googleapis.com/maps/api/js?sensor=true&language=ru&callback=initialize";
+          document.body.appendChild(script);
+        }
+
+        window.onload = loadScript;
+    </script>
+{% endblock %}

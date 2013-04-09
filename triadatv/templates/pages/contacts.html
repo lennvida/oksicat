@@ -1,0 +1,31 @@
+{% extends "layer_01.html" %}
+
+{% load static from staticfiles %}
+{% load thumbnails %}
+
+{% block content %}
+    <div class="content">
+        <div id="map_canvas" style="width: 990px; height: 480px;"></div>
+        {{ current_node.content|safe }}
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true&language=ru"></script>
+    <script type="text/javascript">
+        var mapOptions = {
+          center: new google.maps.LatLng(54.98426, 82.90750),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(54.98426, 82.90750),
+            map: map,
+            title:"Радио «Маяк Ростов»",
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+        });
+    </script>
+{% endblock %}

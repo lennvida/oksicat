@@ -1,0 +1,15 @@
+{% extends "layer_01.html" %}
+
+{% load static from staticfiles %}
+
+{% block content %}
+	<div class="content">{{ current_node.content|safe }}</div>
+	<table>
+		<tbody>{% for topic in topic_list %}
+			<tr>
+				<td>{{ forloop.counter }}</td>
+				<td><a href="{{ topic.get_absolute_url }}">{{ topic.title|slice:":60" }}...</a></td>
+			</tr>
+		{% endfor %}</tbody>
+	</table>
+{% endblock %}

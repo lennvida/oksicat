@@ -9,11 +9,8 @@ from django.conf import settings
 from django.db import models
 from django.template.defaultfilters import filesizeformat
 from django.utils.safestring import mark_safe
-
 from tinymce import models as tnmc_model
 
-from triadatv.core.utils.thumbnails import get_thumbnail
-from triadatv.core.utils.upload import UploadField
 from triadatv.core.models import PublishModel
 
 mptt_options = dict(
@@ -24,9 +21,9 @@ mptt_options = dict(
     level_attr='level'
 )
 
-template_dir = os.path.join(settings.TEMPLATE_DIRS[0], 'pages')
-
 def get_template_choices():
+    template_dir = os.path.join(settings.TEMPLATE_DIRS[0], 'pages')
+
     root_len = len(template_dir.split(os.sep))
     choices = []
     for path, _, files in os.walk(template_dir):
@@ -53,26 +50,17 @@ class StructureNodeManager(TreeManager):
         except StructureNode.DoesNotExist:
             return None
 
-MENU_TYPE_CHOICES = (
-    ('main', u'Основное меню'),
-    ('extra', u'Дополнительное меню'), 
-)
-
 class StructureNode(models.Model):
     slug = models.SlugField(u'системное имя', max_length=100, blank=True)
     title = models.CharField(u'заголовок страницы', max_length=200)
-    menu_type = models.CharField(u'тип меню', max_length=100, choices=MENU_TYPE_CHOICES, default='main')
     menu = models.CharField(u'навигация', max_length=200, help_text=u'название пункта меню')
     menu_visible = models.BooleanField(u'навигация', default=True, help_text=(u'отображать эту страницу в меню навигации'))
-    teaser = tnmc_model.HTMLField(u'анонс', blank=True)
     content = tnmc_model.HTMLField(u'текст', blank=True)
     header_image = models.ImageField(u'картинка для шапки', upload_to='upload/structure/header', null=True, blank=True)
-    index_image = models.ImageField(u'картинка индексной', upload_to='upload/structure/index', null=True, blank=True)    
     parent = models.ForeignKey('self', null=True, blank=True, related_name='children')
     template = models.CharField(u'шаблон', max_length=100, choices=get_template_choices(), default='default.html')
     redirect_url = models.CharField(u'ссылка для редиректа', blank=True, max_length=1000, default="")
     path = models.CharField(max_length=1000, editable=False, unique=True)
-    # gallery = models.ForeignKey(Album, verbose_name=u'галерея', blank=True, null=True)
 
     objects = StructureNodeManager()
 
@@ -190,87 +178,5 @@ class RightBlock(models.Model):
 
     def __unicode__(self):
         return self.description
-
-class UploadManager(models.Manager):
-    def zero(self):
-        return self.get(pk=1)
-
-class Upload(models.Model):
-    title = models.CharField(u'название', max_length=500)
-    slug = models.SlugField(u'slug', blank=True)
-    file = UploadField(u'файл', upload_to='upload/somedate')
-    is_image = models.BooleanField(editable=False)
-
-    objects = UploadManager()
-
-    class Meta:
-        ordering = ('-id',)
-        verbose_name = u'закачка'
-        verbose_name_plural = u'закачки'
-
-    def __unicode__(self):
-        if len(self.title) <= 53:
-            return self.title
-        else:
-            return '%s...%s' % (self.title[:25], self.title[-25:])
-
-    def save(self):
-        self.is_image = self.file.is_image()
-        super(Upload, self).save()
-
-    def get_preview_url(self, size=(48, 48), **kwargs):
-        if self.file.is_image():
-            return get_thumbnail(self.file.path, size=size, **kwargs)
-        else:
-            self.file.url
-
-    def get_cl_preview(self, size=(48, 48)):
-        return u'<img src="%s" alt="%s" />' % (self.get_preview_url(size=size), self.title)
-
-    def get_url(self):
-        return self.file.url
-    url = property(get_url)
-
-    alt = property(lambda self: self.title)
-
-    def get_path(self):
-        return self.file.path
-    path = property(get_path)
-
-    get_cl_preview.allow_tags = True
-    get_cl_preview.short_description = u''
-
-    def get_cl_file_link(self):
-        info = []
-        info.append(filesizeformat(self.file.size))
-        info.append(unicode(mimetypes.guess_type(self.file.path)[0]))
-        if self.file.is_image():
-            info.append(u'%d x %d' % (self.file.width, self.file.height))
-            text = u'смотреть'
-        else:
-            text = u'скачать'
-        info = ' '.join(info)
-
-        html = (u'<span title="%s">'
-                u'    <a href="%s" target="_blank">%s</a>'
-                u'</span>')
-        return html % (info, self.file.url, text)
-
-    get_cl_file_link.allow_tags = True
-    get_cl_file_link.short_description = ''
-
-class Promo(PublishModel):
-    title = models.CharField(u'заголовок', max_length=550, blank=True)
-    description = models.TextField(u'текст  промо', blank=True)
-    photo = models.ImageField(u'фотография', upload_to='upload/promo')
-    weight = models.PositiveSmallIntegerField(u'порядок',  default=0)
-
-    class Meta:
-        verbose_name = u'промо на главной'
-        verbose_name_plural = u'промо на главной'
-        ordering = ('weight',)
-
-    def __unicode__(self):
-        return self.title 
 
 #EOF

@@ -1,0 +1,37 @@
+{% extends "layer_01.html" %}
+
+{% load thumbnails %}
+
+{% block content %}
+    <div class="left column">
+        {% if news_list %}<div class="newslist">
+            <h2>Новости</h2>
+            {% for news in news_list %}
+                <div class="news">
+                    <p class="date">{{ news.date|date:'d F Y' }}</p>
+                    <a href="{{ news.get_absolute_url }}">{{ news.title|safe }}</a>
+                </div>
+            {% endfor %}
+        </div>{% endif %}
+    </div><!--
+
+    --><div class="content column">
+
+        {% if promo_list %}<ul>
+            {% for promo in promo_list %}<li>
+                {% if promo.photo %}
+                    {% if promo.url %}
+                        <a href="{{ promo.url }}"><img src="{{ promo.photo.path|thumbnail:"960x400,crop" }}" alt="{{ promo.title }}" width="960" height="400" border="0" /></a>
+                    {% else %}
+                        <img src="{{ promo.photo.path|thumbnail:"990x400,crop" }}" alt="{{ promo.title }}" width="960" height="400" border="0" />
+                    {% endif %}
+                {% endif %}
+                <div>{{ promo.title|safe }}
+                    <span>{{ promo.description|safe }}</span>
+                </div>
+            </li>{% endfor %}
+        </ul>{% endif %}
+
+        {{ current_node.content|safe }}
+    </div>
+{% endblock %}

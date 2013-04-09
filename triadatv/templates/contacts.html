@@ -1,0 +1,31 @@
+{% extends "layer_01.html" %}
+
+{% block content %}
+    <h1 class="node_title">{{ current_node.title|safe }}</h1>
+    <div class="node_content">
+        <div class="content">
+            <div id = "map_canvas" style="width: 990px; height: 480px;"></div>
+            {{ current_node.content|safe }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block jsfoot %}
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true&language=ru"></script>
+    <script type="text/javascript">
+        var mapOptions = {
+          center: new google.maps.LatLng(54.981997, 82.905836),
+          zoom: 20,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(54.981997, 82.905836),
+            map: map,
+            title:"Триада-ТВ",
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+        });
+    </script>
+{% endblock %}

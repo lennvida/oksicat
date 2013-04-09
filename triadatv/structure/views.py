@@ -6,7 +6,8 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template.context import RequestContext
 
 from triadatv.core.utils import thumbnails
-from triadatv.structure.models import StructureNode, Upload
+from triadatv.structure.models import StructureNode
+from triadatv.core.models import Upload
 
 def language_redirect(request):
     lang = request.session.get('django_language')

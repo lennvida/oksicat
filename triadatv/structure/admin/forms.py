@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
-from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from triadatv.structure.models import StructureNode, Upload
+from triadatv.structure.models import StructureNode
 
 class StructureNodeAdminForm(forms.ModelForm):
 
@@ -69,16 +68,5 @@ class StructureNodeAdminForm(forms.ModelForm):
             instance = StructureNode.objects.insert_node(instance, target, position)
         instance.save()
         return instance
-
-class UploadAdminForm(forms.ModelForm):
-    url_path = forms.CharField(label=_(u'URL'), required=False)
-
-    class Meta:
-        model = Upload
-
-    def __init__(self, *args, **kwargs):
-        super(UploadAdminForm, self).__init__(*args, **kwargs)
-        if self.instance.pk is not None:
-            self.fields['url_path'].initial = reverse('core_uploads_url', args =['pk', self.instance.pk])
 
 #EOF

@@ -29,5 +29,4 @@ class News(PublishModel):
         r = r'.(\w+).models$'
         app = re.findall(r, s)[0].lower()
         cls = self.__class__.__name__.lower()
-        print '%s_%s_detail' % (app, cls, )
         return ('%s_%s_detail' % (app, cls, ), [str(self.date.year), str(self.id), ])

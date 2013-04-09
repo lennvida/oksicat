@@ -1,0 +1,19 @@
+{% extends "layer_01.html" %}
+
+{% block content %}
+	<div class="left column">
+		<ul class="submenu">
+			{% for item in item_list %}
+				<li><a href="#{{ item.id }}">{{ item.title }}</a></li>
+			{% endfor %}
+		</ul>
+	</div><!--
+
+	--><div class="content column">{% for item in item_list %}
+		<div class="item" id="{{ item.id }}">
+			<p>{{ item.title|safe }}</p>
+			<p>{{ item.description|safe }}</p>
+			<p>{{ item.cost }}</p>
+		</div>
+	{% endfor %}</div>
+{% endblock %}

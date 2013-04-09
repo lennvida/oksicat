@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, url
 
-urlpatterns = patterns('',
+urlpatterns = patterns('triadatv.core.views',
+    url(r'^$', 'index', name='index'),
 )

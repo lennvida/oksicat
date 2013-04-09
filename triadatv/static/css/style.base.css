@@ -3,23 +3,21 @@
 	padding: 0;
 	border: 0;
 	color: #000;
-	font-weight: normal;
-	font-family: Verdana, courier, monospace;
-	text-decoration: none;
-
-	-webkit-transition: all .1s ease-in-out;
-	-moz-transition: all .1s ease-in-out;
-	-ms-transition: all .1s ease-in-out;
-	-o-transition: all .1s ease-in-out;
-	transition: all .1s ease-in-out;
+	/*font-weight: normal;*/
+	font-family: "Trebuchet MS",sans-serif;
 }
 
 a {
-	color: #F1902F;/*#274E7A*/
+	text-decoration: none;
+	color: #1776B8;/*#274E7A*/
 }
 
 a:visited {
-	color: #1776B8;
+	color: #F1902F;
+}
+
+p {
+	margin: 5px 0;
 }
 
 body {
@@ -36,6 +34,25 @@ header {
 	margin:30px 0 0;
 }
 
+header .top {
+	position: relative;
+	margin: 20px 20px 0;
+	min-height: 185px;
+}
+
+header .top div {
+	position: absolute;
+}
+
+.slogan {
+	bottom: 0;
+}
+
+.logo {
+	height: 154px;
+	float: right;
+}
+
 menu {
 	position: relative;
 	height: 45px;
@@ -50,7 +67,6 @@ menu a:visited {
 	position: relative;
 	display: block;
 	float: left;
-	margin: 0 5px;
 	padding: 10px 20px 15px;
 	font-size: 18px;
 	text-shadow: 0 -1px 0 #000;
@@ -60,6 +76,12 @@ menu a:visited {
 	background: #1F3E66;
 	box-shadow: 0 -5px 0 rgb(16, 28, 44) inset, 0 0 1px rgba(255,255,255,.7) inset;
 	cursor: pointer;
+
+	-webkit-transition: all .1s ease-in-out;
+	-moz-transition: all .1s ease-in-out;
+	-ms-transition: all .1s ease-in-out;
+	-o-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
 }
 
 menu a:hover {
@@ -71,14 +93,14 @@ menu a:hover {
 
 menu a:active,
 menu a.active {
-	margin-top: 4px;
-	padding: 10px 20px 11px;
-	box-shadow: 0 -1px 0 rgb(16, 28, 44) inset, 0 0 1px rgba(255,255,255,.7) inset;
+	margin-top: 3px;
+	padding: 10px 20px 12px;
+	box-shadow: 0 -2px 0 rgb(16, 28, 44) inset, 0 0 1px rgba(255,255,255,.7) inset;
 }
 
 .body,
 footer {
-	margin: 30px 20px 0;
+	margin: 10px 20px;
 }
 
 h1 {
@@ -86,6 +108,11 @@ h1 {
 	font-weight: bold;
 	color: #999;
 	text-shadow: 0 -1px 0 #777;
+}
+
+h2 {
+	margin-bottom: 20px;
+	font-weight: bold;
 }
 
 .column {
@@ -103,4 +130,41 @@ h1 {
 
 ul.submenu {
 	list-style: none;
+}
+
+.date {
+	font-size: 14px;
+	color: #999;
+}
+
+
+
+
+
+
+/* = новости = */
+.news {
+	margin-bottom: 20px;
+}
+
+.news .date {
+	margin: 0;
+}
+
+.news .title {
+	font-size: 18px;
+	font-weight: normal;
+	margin-bottom: 5px;
+}
+
+/* = endновости = */
+
+
+
+
+
+
+
+.w100 {
+	width: 100px;
 }

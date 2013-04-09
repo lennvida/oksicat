@@ -1,0 +1,18 @@
+{% extends "layer_01.html" %}
+
+{% load static from staticfiles %}
+
+{% block content %}
+	<div class="content">{{ current_node.content|safe }}</div>
+	<div class="topic" id="{{ topic.id }}">
+		<h2>{{ topic.title }}</h2>
+		<div>{{ topic.text }}</div>
+		<p>{{ topic.datetime }}</p>
+		<div class="comment_list" id="comment_to_{{ topic.id }}">
+			{% for comment in topic.message_set.all %}<div class="comment">
+				<p>{{ comment.name }}</p>
+				<p>{{ comment.text|safe }}</p>
+			</div>{% endfor %}
+		</div>
+	</div>
+{% endblock %}
