@@ -16,7 +16,7 @@ class Message(PublishModel):
     class Meta:
         verbose_name = u'Сообщение'
         verbose_name_plural = u'Сообщения'
-        ordering = ('-datetime', )
+        ordering = ('datetime', )
 
     def __unicode__(self):
         return self.text[:60]

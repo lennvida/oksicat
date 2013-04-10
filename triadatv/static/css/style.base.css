@@ -160,11 +160,69 @@ ul.submenu {
 /* = endновости = */
 
 
+/* = forum = */
+th {
+	font-weight: normal;
+}
+
+.comment_list {
+	margin-top: 20px;
+}
+
+form {
+	margin-top: 20px;
+}
+
+dt {
+	width: 75px;
+	font-size: 12px;
+	opacity: .6;
+	margin-top: 10px;
+}
+
+dd {
+	min-height: 20px;
+}
+
+input {
+	border-radius: 2px;
+	padding: 2px 5px;
+}
+
+textarea {
+	width: 100%;
+}
+
+.errorlist {
+	list-style: none;
+	margin-bottom: 10px;
+}
+
+.errorlist li {
+	list-style: none;
+	color: #F1902F;
+	font-size: 12px;
+}
+
+input[type="submit"] {
+	padding: 10px 20px;
+}
+/* = endforum = */
 
 
 
 
-
+/* = extra = */
 .w100 {
 	width: 100px;
 }
+
+.opt05 {
+	opacity: .5;
+}
+
+.fs14 {
+	font-size: 14px;
+}
+
+/* = endextra = */

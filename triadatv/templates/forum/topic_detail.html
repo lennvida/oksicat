@@ -7,12 +7,24 @@
 	<div class="topic" id="{{ topic.id }}">
 		<h2>{{ topic.title }}</h2>
 		<div>{{ topic.text }}</div>
-		<p>{{ topic.datetime }}</p>
+		<p class="date">{{ topic.datetime }}</p>
 		<div class="comment_list" id="comment_to_{{ topic.id }}">
-			{% for comment in topic.message_set.all %}<div class="comment">
-				<p>{{ comment.name }}</p>
-				<p>{{ comment.text|safe }}</p>
+			{% for comment in topic.message_set.all %}<div class="comment" id="{{ comment.id }}">
+				<p>{{ comment.name }} <span class="date">{{ comment.datetime }}</span></p>
+				<div class="text">{{ comment.text }}</div>
 			</div>{% endfor %}
 		</div>
+		<form method="post">
+			<fieldset>
+				<dl>
+				{% for field in message_form %}
+					<dt>{{ field.label }}</dt>
+					<dd>{{ field }}</dd>
+					{% if field.errors %}{{ field.errors }}{% endif %}
+				{% endfor %}
+				</dl>
+				<input type="submit" value="Отправить">
+			</fieldset>
+		</form>
 	</div>
 {% endblock %}

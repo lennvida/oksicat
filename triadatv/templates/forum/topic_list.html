@@ -4,10 +4,14 @@
 
 {% block content %}
 	<div class="content">{{ current_node.content|safe }}</div>
-	<table>
+	<table cellspacing="5">
+		<thead class="opt05 fs14">
+			<th>#</th>
+			<th>Название</th>
+		</thead>
 		<tbody>{% for topic in topic_list %}
 			<tr>
-				<td>{{ forloop.counter }}</td>
+				<td class="opt05 fs14">{{ forloop.counter }}</td>
 				<td><a href="{{ topic.get_absolute_url }}">{{ topic.title|slice:":60" }}...</a></td>
 			</tr>
 		{% endfor %}</tbody>
