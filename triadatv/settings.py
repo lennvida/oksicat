@@ -36,7 +36,7 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
 ADMINS = ((os.environ.get('DJANGO_ADMIN_NAME', 'Admin'),
            os.environ.get('DJANGO_ADMIN_EMAIL', 'dimka.n42@gmail.com')),)
-if DEBUG :
+if DEBUG:
     MANAGERS = ADMINS
 else:
     MANAGERS = ((
