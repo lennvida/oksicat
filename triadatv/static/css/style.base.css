@@ -226,3 +226,15 @@ input[type="submit"] {
 }
 
 /* = endextra = */
+
+
+/* = footer = */
+.ost>* {
+	display: inline-block;
+	height: 100%;
+}
+.ost .site_map {
+	font-size: 12px;
+	float: right;
+}
+/* = endfooter = */

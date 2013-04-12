@@ -2,8 +2,11 @@
 
 import re
 
+from django.contrib.auth.models import User, UserManager
 from django.db import models
 from django.db.models.query import QuerySet
+from django.db.models.signals import post_save
+from django.utils.translation import ugettext_lazy as _
 from tinymce import models as tnmc_model
 
 from triadatv.core.utils.thumbnails import get_thumbnail
@@ -132,3 +135,32 @@ class Promo(PublishModel):
 
     def __unicode__(self):
         return self.title
+
+# Create your models here.
+def Userpic_path(instance, filename):
+    return 'users_upload/%s-%s/%s' % (instance.id, instance.username, filename)
+
+class Profile(User):
+    second_name = models.CharField(_(u'Отчество'), max_length=30, blank=True)
+    phone = models.CharField(max_length=30, blank=True, verbose_name=u'Телефон')
+    userpic = models.FileField(upload_to=Userpic_path, verbose_name=u'Аватар', blank=True)
+
+    objects = UserManager()
+
+    def __unicode__(self):
+        return self.username
+
+    class Meta:
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
+#class Favorits(models.Model): # многие ко многим?
+
+def create_custom_user(sender, instance, created, **kwargs):
+    if created:
+        values = {}
+        for field in sender._meta.local_fields:
+            values[field.attname] = getattr(instance, field.attname)
+        user = Profile(**values)
+        user.save()
+
+post_save.connect(create_custom_user, User)

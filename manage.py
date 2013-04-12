@@ -3,7 +3,7 @@ import os
 from os import environ
 import sys
 
-environ['DJANGO_DEBUG'] = 'debug'
+# environ['DJANGO_DEBUG'] = 'debug'
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "triadatv.settings")

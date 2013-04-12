@@ -7,7 +7,7 @@ from triadatv.structure.models import StructureNode
 def site_name(request):
     return {
         'SITE_NAME': settings.SITE_NAME,
-        'YANDEX_KEY': settings.YANDEX_KEY
+        # 'YANDEX_KEY': settings.YANDEX_KEY
     }
 
 def current_node(request):

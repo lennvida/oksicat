@@ -17,8 +17,8 @@ EMAIL_SUBJECT_PREFIX = u'[%s] ' % SITE_NAME
 
 MEDIA_ROOT = os.path.join(SITE_ROOT, 'media')
 MEDIA_URL = '/media/'
-# LOCAL_MEDIA_ROOT = MEDIA_ROOT
-# LOCAL_MEDIA_URL = MEDIA_URL
+LOCAL_MEDIA_ROOT = MEDIA_ROOT
+LOCAL_MEDIA_URL = MEDIA_URL
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 STATIC_URL = '/static/'
@@ -139,7 +139,7 @@ INSTALLED_APPS = (
     'south',
     'tinymce',
 
-    # 'triadatv.forum',
+    'triadatv.forum',
     'triadatv.catalog',
     'triadatv.core',
     'triadatv.map',
@@ -149,6 +149,12 @@ INSTALLED_APPS = (
 
 SECRET_KEY = 'z2tb%d!ev#94hq$=%da(&amp;0+21^9o+_ri-&amp;t!%ej=%9)@n54lx3'
 
+AUTHENTICATION_BACKENDS = (
+    'triadatv.core.auth_backends.CustomUserModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+CUSTOM_USER_MODEL = 'core.Profile'
 
 
 
@@ -170,12 +176,6 @@ SECRET_KEY = 'z2tb%d!ev#94hq$=%da(&amp;0+21^9o+_ri-&amp;t!%ej=%9)@n54lx3'
 
 
 
-# AUTHENTICATION_BACKENDS = (
-#     'triadatv.auth_backends.CustomUserModelBackend',
-#     'django.contrib.auth.backends.ModelBackend',
-# )
-
-# CUSTOM_USER_MODEL = 'core.Profile'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

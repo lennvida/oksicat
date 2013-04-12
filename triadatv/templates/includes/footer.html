@@ -2,4 +2,5 @@
 
 <div class="ost">
 	<div class="c">&copy;&nbsp;Триада-ТВ, {% cop_year %}</div>
+	<div class="site_map">{% if user.is_authenticated %}{{ user.username }} <a href="/logout">Покинуть систему</a>{% else %}<a href="/registration">Регистрация</a>/<a href="/login">Вход</a>{% endif %}</div>
 </div>
