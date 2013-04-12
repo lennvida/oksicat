@@ -16,12 +16,12 @@ SITE_ID = 1
 EMAIL_SUBJECT_PREFIX = u'[%s] ' % SITE_NAME
 
 MEDIA_ROOT = os.path.join(SITE_ROOT, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = '/oksicat/media/'
 LOCAL_MEDIA_ROOT = MEDIA_ROOT
 LOCAL_MEDIA_URL = MEDIA_URL
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
-STATIC_URL = '/static/'
+STATIC_URL = '/oksicat/static/'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -35,13 +35,13 @@ DEFAULT_FROM_EMAIL = 'noreply@triadatv.ru'
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
 ADMINS = ((os.environ.get('DJANGO_ADMIN_NAME', 'Admin'),
-           os.environ.get('DJANGO_ADMIN_EMAIL', 'bugs@triadatv.ru')),)
+           os.environ.get('DJANGO_ADMIN_EMAIL', 'dimka.n42@gmail.com')),)
 if DEBUG :
     MANAGERS = ADMINS
 else:
     MANAGERS = ((
         os.environ.get('DJANGO_MANAGER_NAME', 'Feedback'),
-        os.environ.get('DJANGO_MANAGER_EMAIL', 'feedback@triadatv.ru')
+        os.environ.get('DJANGO_MANAGER_EMAIL', 'dimka.n42@gmail.com')
     ),)
 
 DATABASE_SQLITE = {
