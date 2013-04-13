@@ -27,7 +27,7 @@ def login(request):
         user = form.get_user()
         if user and user.is_active:
             user_login(request, user)
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/oksicat/')
     return render_to_response('form.html', RequestContext(request, {
         'form': form,
     }))
@@ -40,7 +40,7 @@ def registration(request):
     form = UserCreationForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
         new_user = form.save()
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/oksicat/')
     return render_to_response('form.html', RequestContext(request, {
         'form': form,
     }))

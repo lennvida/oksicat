@@ -18,7 +18,7 @@ def structurenode(request, path):
     if settings.APPEND_SLASH and path and not path.endswith('/'):
         return HttpResponsePermanentRedirect('/%s/' % path)
     path = '/%s' % (path)
-    obj = get_object_or_404(StructureNode, path=path)
+    obj = get_object_or_404(StructureNode, path='/oksicat%s' % (path))
     return render_to_response(obj.get_template(), 
                               dict(object=obj, root=obj.get_root()), 
                               RequestContext(request))
