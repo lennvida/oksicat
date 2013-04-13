@@ -1,6 +1,6 @@
 {% load navigation %}
 
-{% get_menu_level 1 "all" menu_list %}
+{% get_menu_level 2 "all" menu_list %}
 <menu><!--
 	{% for node in menu_list %}
 		--><a{% if node != current_root_node %} href="{{ node.get_absolute_url }}"{% endif %}{% if node == current_root_node %} class="active"{% endif %}>{{ node.menu|safe }}</a><!--
