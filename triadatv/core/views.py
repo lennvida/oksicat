@@ -3,11 +3,12 @@
 from django.contrib.auth import login as user_login, logout as user_logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render_to_response, redirect
+from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.template import RequestContext
 
 from triadatv.news.models import News
-from triadatv.core.models import Promo
+from triadatv.core.models import Promo, Profile
+from triadatv.core.forms import ProfileChangeUserForm
 
 def hello(request):
     return HttpResponse('Работает!')
@@ -45,6 +46,13 @@ def registration(request):
         'form': form,
     }))
 
-def account(request):
-    user = request.user
-    return render_to_response('account.html', {'user': user, })
+def user_information(request, username):
+    if not request.user.is_authenticated() or request.user.username != username:
+        return HttpResponseRedirect('/login/')
+    user = get_object_or_404(Profile, username=username)
+    form = ProfileChangeUserForm(request.POST or None, instance=user)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+    return render_to_response('form.html', RequestContext(request, {
+        'form': form,
+    }))

@@ -18,3 +18,15 @@ class Item(PublishModel):
 
     def __unicode__(self):
         return self.title
+
+class Instruction(PublishModel):
+    item = models.ForeignKey(Item, verbose_name=u'Модель')
+    pdf = models.FileField(help_text=u'pdf-файл с инструкцией', upload_to='item/instruction', blank=True)
+    description = models.CharField(max_length=64, verbose_name=u'описание')
+
+    class Meta:
+        verbose_name = u'Инструкция'
+        verbose_name_plural = u'Инструкции'
+
+    def __unicode__(self):
+        return self.item.title

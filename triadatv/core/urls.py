@@ -9,4 +9,5 @@ urlpatterns = patterns('triadatv.core.views',
     url(r'^registration/$', 'registration', name='registration'),
     url(r'^login/$', 'login', name='login'),
     url(r'^logout/$', 'logout', name='logout'),
+    url(r'^user/(?P<username>.*)/$', 'user_information', name='user_information'),
 )

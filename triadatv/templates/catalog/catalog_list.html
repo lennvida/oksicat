@@ -14,6 +14,9 @@
 			<p>{{ item.title|safe }}</p>
 			<p>{{ item.description|safe }}</p>
 			<p>{{ item.cost }}</p>
+			{% if item.instruction_set.all %}<ul class="pdf_file"><!--
+				{% for intstruction in item.instruction_set.all %}--><li>{{ intstruction.description }}<br /><a href="{{ intstruction.pdf.url }}" >скачать файл</a></li><!--{% endfor %}
+			--></ul>{% endif %}
 		</div>
 	{% endfor %}</div>
 {% endblock %}
