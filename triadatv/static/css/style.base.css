@@ -238,3 +238,80 @@ input[type="submit"] {
 	float: right;
 }
 /* = endfooter = */
+
+/* = формы = */
+form th {
+	text-align: left;
+	top: 0;
+	padding-right: 10px;
+}
+
+form span.helptext {
+	font-size: 12px;
+	color: #777;
+}
+
+form input {
+	width: 200px;
+}
+
+form input[type='submit'] {
+	position: relative;
+	display: block;
+	float: left;
+	padding: 10px 20px 15px;
+	font-size: 18px;
+	border-right: 1px solid rgb(170, 170, 170);
+	border-radius: 3px;
+	box-shadow: 0 -5px 0 rgb(170, 170, 170) inset, 0 0 1px rgba(255,255,255,.7) inset;
+	cursor: pointer;
+
+	-webkit-transition: all .1s ease-in-out;
+	-moz-transition: all .1s ease-in-out;
+	-ms-transition: all .1s ease-in-out;
+	-o-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
+}
+
+form input[type='submit']:hover {
+	background-color: rgb(170, 170, 170);
+	border-right: 1px solid rgb(127, 127, 127);
+	box-shadow: 0 -5px 0 rgb(127, 127, 127) inset, 0 0 1px rgba(255,255,255,.7) inset;
+}
+
+form input[type='submit']:active {
+	margin-top: 3px;
+	padding: 10px 20px 12px;
+	box-shadow: 0 -2px 0 rgb(170, 170, 170) inset, 0 0 1px rgba(255,255,255,.7) inset;
+}
+
+form input[type='submit']:hover:active {
+	margin-top: 3px;
+	box-shadow: 0 -2px 0 rgb(127, 127, 127) inset, 0 0 1px rgba(255,255,255,.7) inset;
+}
+
+/* = endформы = */
+
+/* = каталог = */
+.pdf_file {
+	list-style: none;
+	float: left;
+}
+
+.pdf_file a {
+	position: relative;
+	display: inline-block;
+	padding: 50px 0 0;
+	font-size: 12px;
+}
+
+.pdf_file a::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 8px;
+	height: 50px;
+	width: 50px;
+	background: url('../images/pdf-icon.png') no-repeat;
+}
+/* = endкаталог = */
