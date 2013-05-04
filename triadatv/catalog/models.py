@@ -8,7 +8,7 @@ from triadatv.core.models import PublishModel
 class Item(PublishModel):
     title = models.CharField(max_length=255, verbose_name=u'Название')
     description = tnmc_model.HTMLField(verbose_name=u'Описание')
-    cost = models.IntegerField(verbose_name=u'Стоимость', default=0)
+    cost = models.IntegerField(verbose_name=u'Стоимость', default=0, blank=True)
     weight = models.PositiveSmallIntegerField(u'порядок',  default=0)
 
     class Meta:

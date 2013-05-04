@@ -64,7 +64,7 @@ DATE_FORMAT = u'd F Y'
 DATE_INPUT_FORMATS = (
     u'%d/%m/%Y',
 )
-TIME_FORMAT = u'H:m:s'
+TIME_FORMAT = u'H:i:s'
 TIME_INPUT_FORMATS = (
     u'%H:%M:%S',
 )
