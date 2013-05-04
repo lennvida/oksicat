@@ -13,7 +13,7 @@
 		<div class="item" id="{{ item.id }}">
 			<h2>{{ item.title|safe }}</h2>
 			<p>{{ item.description|safe }}</p>
-			{% if item.cost %}<p>Цена: {{ item.cost }} руб.</p>{% endif %}
+			{% if item.cost %}<p class="cost">Цена: {{ item.cost }} руб.</p>{% endif %}
 			{% if item.instruction_set.all %}<ul class="pdf_file"><!--
 				{% for intstruction in item.instruction_set.all %}--><li>{{ intstruction.description }}<br /><a href="{{ intstruction.pdf.url }}" >скачать файл</a></li><!--{% endfor %}
 			--></ul>{% endif %}

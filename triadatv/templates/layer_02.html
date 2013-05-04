@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% load static from staticfiles %}
+
+{% block body %}
+	<h1 class="node_title">{{ current_node.title|safe }}</h1>
+	<div class="node_content">
+		{% block content %}<div class="content">{{ current_node.content|safe }}</div>{% endblock %}
+	</div>
+{% endblock %}
