@@ -1,19 +1,18 @@
-html {
-	height: 100%;
-}
-
 * {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	color: #000;
-	/*font-weight: normal;*/
 	font-family: "Trebuchet MS",sans-serif;
+}
+
+html {
+	height: 100%;
 }
 
 a {
 	text-decoration: none;
-	color: #1776B8;/*#274E7A*/
+	color: #1776B8;
 }
 
 a:visited {
@@ -26,42 +25,84 @@ p {
 
 body {
 	width: 1000px;
+	height: 100%;
 	margin: 0 auto;
 	background-color: #ccc;
 }
 
+.body {
+	margin: 50px 20px 92px;
+}
+
+h1 {
+	margin-bottom: 20px;
+	font-weight: bold;
+	color: #999;
+	text-shadow: 0 -1px 0 #777;
+}
+
+h2 {
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+.column {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.left {
+	width: 250px;
+}
+
+.left + .content {
+	width: 710px;
+}
+
+ul.submenu {
+	list-style: none;
+	font-size: 14px;
+	left: -20px;
+	position: relative;
+}
+
+.date {
+	font-size: 14px;
+	color: #999;
+}
+
+
+
+
+/* = Заголовок = */
 header {
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	user-select: none;
-	margin:30px 0 0;
+	padding: 30px 0 0;
 }
 
-header .top {
+.logo {
 	position: relative;
-	margin: 20px 20px 0;
-	min-height: 185px;
+	float: right;
+	height: 154px;
 }
 
-header .top div {
-	position: absolute;
+.top {
+	margin-right: 214px;
 }
 
 .slogan {
 	bottom: 0;
-}
-
-.logo {
-	height: 154px;
-	float: right;
+	font-size: 14px;
+	padding: 76px 0 0 30px;
 }
 
 menu {
 	position: relative;
 	height: 45px;
 	width: 100%;
-	margin: 10px 0 0;
 	padding: 10px 0;
 	border-radius: 2px;
 }
@@ -101,47 +142,7 @@ menu a.active {
 	padding: 10px 20px 12px;
 	box-shadow: 0 -2px 0 rgb(16, 28, 44) inset, 0 0 1px rgba(255,255,255,.7) inset;
 }
-
-.body,
-footer {
-	margin: 10px 20px;
-}
-
-h1 {
-	margin-bottom: 20px;
-	font-weight: bold;
-	color: #999;
-	text-shadow: 0 -1px 0 #777;
-}
-
-h2 {
-	margin-bottom: 20px;
-	font-weight: bold;
-}
-
-.column {
-	display: inline-block;
-	vertical-align: top;
-}
-
-.left {
-	width: 250px;
-}
-
-.left + .content {
-	width: 710px;
-}
-
-ul.submenu {
-	list-style: none;
-}
-
-.date {
-	font-size: 14px;
-	color: #999;
-}
-
-
+/* = endЗаголовок = */
 
 
 
@@ -162,6 +163,8 @@ ul.submenu {
 }
 
 /* = endновости = */
+
+
 
 
 /* = forum = */
@@ -232,16 +235,7 @@ input[type="submit"] {
 /* = endextra = */
 
 
-/* = footer = */
-.ost>* {
-	display: inline-block;
-	height: 100%;
-}
-.ost .site_map {
-	font-size: 12px;
-	float: right;
-}
-/* = endfooter = */
+
 
 /* = формы = */
 form th {
@@ -296,7 +290,14 @@ form input[type='submit']:hover:active {
 
 /* = endформы = */
 
+
+
+
 /* = каталог = */
+.cost {
+	margin: 10px 0;
+}
+
 .item {
 	margin: 50px 0 0;
 }
@@ -308,6 +309,10 @@ form input[type='submit']:hover:active {
 .pdf_file {
 	list-style: none;
 	float: left;
+}
+
+.pdf_file li {
+	padding: 20px 0 0 20px;
 }
 
 .pdf_file a {
@@ -328,7 +333,24 @@ form input[type='submit']:hover:active {
 }
 /* = endкаталог = */
 
+
+
+
+/* = footer = */
 footer {
 	position: relative;
-	bottom: 0;
+	height: 22px;
+	margin: -92px 20px 0;
+	padding: 50px 0 20px;
 }
+
+.ost>* {
+	display: inline-block;
+	height: 100%;
+}
+
+.ost .site_map {
+	font-size: 12px;
+	float: right;
+}
+/* = endfooter = */

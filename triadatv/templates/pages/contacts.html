@@ -1,11 +1,9 @@
 {% extends "layer_01.html" %}
 
 {% block content %}
-    <div class="node_content">
-        <div class="content">
-            <div id = "map_canvas" style="width: 990px; height: 480px;"></div>
-            {{ current_node.content|safe }}
-        </div>
+    <div class="content">
+        <div id="map_canvas" style="width: 960px; height: 480px;"></div>
+        {{ current_node.content|safe }}
     </div>
 {% endblock %}
 
