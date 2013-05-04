@@ -1,3 +1,7 @@
+html {
+	height: 100%;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -293,6 +297,14 @@ form input[type='submit']:hover:active {
 /* = endформы = */
 
 /* = каталог = */
+.item {
+	margin: 50px 0 0;
+}
+
+.item:first-child {
+	margin: 0;
+}
+
 .pdf_file {
 	list-style: none;
 	float: left;
@@ -315,3 +327,8 @@ form input[type='submit']:hover:active {
 	background: url('../images/pdf-icon.png') no-repeat;
 }
 /* = endкаталог = */
+
+footer {
+	position: relative;
+	bottom: 0;
+}
