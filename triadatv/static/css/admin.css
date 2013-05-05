@@ -1,0 +1,124 @@
+#header {
+    background: #000;
+}
+
+#site-name {
+    text-indent: -9999px;
+}
+
+#header #branding h1 {
+    padding: 11px 20px;
+    background: transparent url(../images/logo-min-icon.png) 4px no-repeat;
+    height: 19px;
+    width: 72px;
+}
+
+#header #navigation-menu {
+    height: 35px;
+    z-index: 9999;
+    background: #d2d2d2;
+    border-bottom: 1px solid #a2a2a2;
+}
+
+#header ul#navigation-menu li:first-child a {
+    margin: 0;
+    padding: 11px 15px 8px;
+    background: none;
+    position: relative;
+}
+
+#header ul#navigation-menu li.first a::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    height: 20px;
+    width: 20px;
+    background: transparent url(../images/home-25px.png) no-repeat;
+}
+
+#header ul#navigation-menu li:hover>ul li,
+#header ul#navigation-menu li.over>ul li,
+#header ul#navigation-menu li ul li:hover>ul li,
+#header ul#navigation-menu li ul li.over>ul li {
+    background: #d2d2d2;
+}
+
+#header ul#navigation-menu ul {
+    border: 1px solid #ededed;
+}
+
+#header ul#navigation-menu li:hover,
+#header ul#navigation-menu li.over,
+#header ul#navigation-menu li.selected {
+    background: #d2d2d2 url(../images/bg_r.png);
+}
+
+#header ul#navigation-menu li:hover {
+    background: #d2d2d2 url(../images/bg_l.png);
+}
+
+#header ul#navigation-menu li ul li:hover,
+#header ul#navigation-menu li ul li.over,
+#header ul#navigation-menu li ul li.selected,
+#header ul#navigation-menu li ul li ul li:hover,
+#header ul#navigation-menu li ul li ul li.overr,
+#header ul#navigation-menu li ul li ul li.selected {
+    background: #d2d2d2 url(../images/bg_r.png);
+}
+
+#header ul#navigation-menu li ul li:hover,
+#header ul#navigation-menu li ul li ul li:hover {
+    background: #d2d2d2 url(../images/bg_l.png);
+}
+
+#changelist .paginator,
+div.breadcrumbs {
+    background: white;
+}
+
+.dashboard-module h2 {
+    background: #d2d2d2;
+}
+
+.dashboard-module {
+    border: 1px solid #a2a2a2;
+    border-radius: 2px;
+}
+
+#changelist .actions,
+#changelist #toolbar {
+    background: #d2d2d2;
+    border: none;
+}
+
+.change-list .filtered {
+    border: 1px solid #a2a2a2;
+    border-radius: 2px;
+}
+
+label[for="searchbar"] {
+    display: none;
+}
+
+input[type="text"] {
+    border-radius: 2px;
+}
+
+input[value="Найти"],
+input[value="Найти"]:active {
+    content: '';
+    margin-left: 5px;
+    height: 20px;
+    width: 20px;
+    background: url(../images/search.png) no-repeat;
+    border: none;
+    color: transparent;
+}
+
+.dashboard-module h3 a,
+.dashboard-module.draggable h2,
+#header ul#navigation-menu li a,
+.dashboard-module h2 {
+    color: black;
+}

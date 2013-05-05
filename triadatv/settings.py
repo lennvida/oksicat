@@ -263,3 +263,9 @@ YANDEX_KEY = ""
 WSGI_APPLICATION = 'wsgi.application'
 
 # LOCALE_PATHS = (os.path.join(SITE_ROOT, 'locale'),)
+
+ADMIN_TOOLS_THEMING_CSS = 'css/admin.css'
+
+ADMIN_TOOLS_MENU = 'triadatv.menu.CustomMenu'
+ADMIN_TOOLS_INDEX_DASHBOARD = 'triadatv.dashboard.CustomIndexDashboard'
+ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'triadatv.dashboard.CustomAppIndexDashboard'
