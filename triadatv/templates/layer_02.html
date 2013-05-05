@@ -4,7 +4,20 @@
 
 {% block body %}
 	<h1 class="node_title">{{ current_node.title|safe }}</h1>
-	<div class="node_content">
-		{% block content %}<div class="content">{{ current_node.content|safe }}</div>{% endblock %}
-	</div>
+	<div class="node_content">{% block content %}
+
+		{% block rpanel %}{% if current_node.right_blocks.count %}
+			<ul class="rpanel column">
+	            {% for right_block in current_node.right_blocks.all %}
+	                <li>
+	                    {% if right_block.photo %}<img src="{{ right_block.photo.url }}" />{% endif %}
+	                    {{ right_block.description|safe }}
+	                </li>
+	            {% endfor %}
+	        </ul><!--
+	    {% endif %}{% endblock %}
+
+		--><div class="content column">{{ current_node.content|safe }}</div>
+
+	{% endblock %}</div>
 {% endblock %}

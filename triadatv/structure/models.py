@@ -37,7 +37,7 @@ def get_template_choices():
 class StructureNodeManager(TreeManager):
     def menu_visible(self):
         return self.get_query_set().filter(menu_visible=True)
-    
+
     def get_by_path(self, path):
         bits = [b for b in path.split('/') if b]
         while len(bits):
@@ -78,7 +78,7 @@ class StructureNode(models.Model):
         node, parts = self, [self.slug, '']
         while node.parent:
             parts.insert(0, node.parent.slug)
-            node = node.parent 
+            node = node.parent
         self.path = '/'.join(parts)
 
     def save(self, force_insert=False, force_update=False):
@@ -98,12 +98,12 @@ class StructureNode(models.Model):
 
     def high_level(self):
         return self.level > 0
-    
+
     def get_full_title(self):
         if self.parent and self.parent.slug and self.level > 2:
             return u'%s &mdash; %s' % (self.title, self.parent.get_full_title(), )
         return u'%s &mdash; %s' % (self.title, settings.SITE_NAME)
-    
+
     def get_full_keywords(self):
         if self.parent and self.parent.slug and self.level > 2:
             return u'%s,%s' % (self.title, self.parent.get_full_keywords(), )
@@ -174,7 +174,7 @@ class RightBlock(models.Model):
     class Meta:
         verbose_name = u'правый блок'
         verbose_name_plural = u'правые блоки'
-        ordering = ('weight',)
+        ordering = ('weight', )
 
     def __unicode__(self):
         return self.description

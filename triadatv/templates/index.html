@@ -1,6 +1,13 @@
 {% extends "layer_01.html" %}
 
+{% load static from staticfiles %}
 {% load thumbnails %}
+
+{% block extrahead %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/flexslider.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.flexslider-min.js' %}"></script>
+{% endblock %}
 
 {% block content %}
     <div class="left column">
@@ -15,23 +22,47 @@
         </div>{% endif %}
     </div><!--
 
-    --><div class="content column">
+    {% block rpanel %}{% if current_node.right_blocks.count %}
+        --><ul class="column rpanel ">
+            {% for right_block in current_node.right_blocks.all %}
+                <li>
+                    {% if right_block.photo %}<img src="{{ right_block.photo.url }}" />{% endif %}
+                    {{ right_block.description|safe }}
+                </li>
+            {% endfor %}
+        </ul><!--
+    {% endif %}{% endblock %}
 
-        {% if promo_list %}<ul>
-            {% for promo in promo_list %}<li>
-                {% if promo.photo %}
-                    {% if promo.url %}
-                        <a href="{{ promo.url }}"><img src="{{ promo.photo.path|thumbnail:"960x400,crop" }}" alt="{{ promo.title }}" width="960" height="400" border="0" /></a>
-                    {% else %}
-                        <img src="{{ promo.photo.path|thumbnail:"990x400,crop" }}" alt="{{ promo.title }}" width="960" height="400" border="0" />
-                    {% endif %}
-                {% endif %}
-                <div>{{ promo.title|safe }}
-                    <span>{{ promo.description|safe }}</span>
-                </div>
-            </li>{% endfor %}
-        </ul>{% endif %}
+    --><div class="content column">
+        {% if promo_list.count %}
+            <div class="slideshow">
+                <ul class="slides">
+                    {% for promo in promo_list %}<li>
+                        {% if promo.photo %}
+                            {% if promo.url %}
+                                <a href="{{ promo.url }}"><div class="slide-description" style="background: url('{{ promo.photo.path|thumbnail:"460x230,crop" }}');">{{ promo.description|safe }}</div></a>
+                            {% else %}
+                                <div class="slide-description" style="background: url('{{ promo.photo.path|thumbnail:"460x230,crop" }}');">{{ promo.description|safe }}</div>
+                            {% endif %}
+                        {% endif %}
+                    </li>{% endfor %}
+                </ul>
+            </div>
+
+            <script type="text/javascript" charset="utf-8">
+                $(window).load(function() {
+                    $('.slideshow').flexslider({
+                        namespace: "slideshow-",
+                        animation: "slide",
+                        slideshowSpeed: 15000,
+                        pauseOnAction: false,
+                        directionNav: false,
+                    });
+                });
+            </script>
+        {% endif %}
 
         {{ current_node.content|safe }}
+
     </div>
 {% endblock %}

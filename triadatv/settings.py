@@ -85,7 +85,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     # 'django.contrib.messages.context_processors.messages',
 
-    'triadatv.core.context_processors.promo',
+    # 'triadatv.core.context_processors.promo',
     'triadatv.structure.context_processors.current_node',
     'triadatv.structure.context_processors.site_name',
 )
@@ -156,27 +156,6 @@ AUTHENTICATION_BACKENDS = (
 
 CUSTOM_USER_MODEL = 'core.Profile'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
@@ -228,7 +207,7 @@ TINYMCE_PLUGINS = [
 TINYMCE_DEFAULT_CONFIG={
     'theme' : "advanced",
     'plugins' : ",".join(TINYMCE_PLUGINS),
-    'browsers' : "gecko",    
+    'browsers' : "gecko",
     'language' : 'ru',
     'theme_advanced_buttons1' : "formatselect,justifyleft,justifyright,|,bold,italic,strikethrough,sub,sup,blockquote,|,link,unlink,image,|,bullist,numlist,outdent,indent,|,table,delete_table,|,row_after,row_before,delete_row,|,cleanup,code",
     'theme_advanced_buttons3' : "",
