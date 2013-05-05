@@ -22,16 +22,16 @@
         </div>{% endif %}
     </div><!--
 
-    {% block rpanel %}{% if current_node.right_blocks.count %}
-        --><ul class="column rpanel ">
+    {% block rpanel %}
+        --><ul class="column rpanel ">{% if current_node.right_blocks.count %}
             {% for right_block in current_node.right_blocks.all %}
                 <li>
                     {% if right_block.photo %}<img src="{{ right_block.photo.url }}" />{% endif %}
                     {{ right_block.description|safe }}
                 </li>
             {% endfor %}
-        </ul><!--
-    {% endif %}{% endblock %}
+        {% endif %}</ul><!--
+    {% endblock %}
 
     --><div class="content column">
         {% if promo_list.count %}

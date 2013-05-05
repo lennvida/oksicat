@@ -9,8 +9,8 @@ from triadatv.core.forms import ProfileChangeForm
 from triadatv.core.models import Upload, Promo, Profile
 
 class PromoAdmin(admin.ModelAdmin):
-    list_display = ['__unicode__', 'is_published', 'weight', ]
-    list_editable = ['is_published', 'weight', ]
+    list_display = ['__unicode__', 'url', 'is_published', 'weight', ]
+    list_editable = ['is_published', 'url', 'weight', ]
 
 class UploadAdmin(admin.ModelAdmin):
     list_display = ('get_cl_preview', 'title', 'get_cl_file_link')
