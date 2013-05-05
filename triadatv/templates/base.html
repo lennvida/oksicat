@@ -6,7 +6,7 @@
 	<head>{% block head %}
 
 		<title>{% block title %}{% if current_node.self_fields.title %}{{ current_node.self_fields.title|safe }}{% else %}{{ current_node.get_full_title|safe }}{% endif %}{% endblock %}</title>
-		<meta itemprop="image" content="/static/favicon.ico">
+		<meta itemprop="image" content="{% static 'favicon.ico' %}">
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="description" content="{% block description %}{% if current_node.self_fields.description %}{{ current_node.self_fields.description }}{% else %}{{ current_node.content|safe|striptags|slice:"0:184" }}...{% endif %}{% endblock %}">

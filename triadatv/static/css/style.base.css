@@ -354,3 +354,20 @@ footer {
 	float: right;
 }
 /* = endfooter = */
+
+
+
+
+/* = rpanel = */
+.rpanel {
+	width: 200px;
+	padding-left: 50px;
+	float: right;
+	list-style: none;
+	font-size: 14px;
+}
+
+.rpanel + .column {
+	width: 460px;
+}
+/* = endrpanel = */
