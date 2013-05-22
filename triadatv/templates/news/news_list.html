@@ -11,9 +11,9 @@
 
 	--><div class="content column">{% for news in news_list %}
 		<div class="news">
-			<h2 class="tit"><a href="{{ news.get_absolute_url }}">{{ news.title }}</a></h2>
+			<h2 class="tit"><a href="{{ news.get_absolute_url }}">{{ news.title|safe }}</a></h2>
 			<p class="date">{{ news.date }}</p>
-			<p>{{ news.anons }}</p>
+			<p>{{ news.anons|safe }}</p>
 		</div>
 	{% endfor %}</div>
 {% endblock %}

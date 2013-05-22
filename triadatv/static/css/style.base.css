@@ -379,3 +379,12 @@ footer {
 	width: 460px;
 }
 /* = endrpanel = */
+
+.top_promo {
+	width: 175px;
+	height: 75px;
+	position: relative;
+	float: left;
+	top: 0;
+	left: 60px;
+}

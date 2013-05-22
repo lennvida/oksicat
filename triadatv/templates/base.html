@@ -13,6 +13,9 @@
 		<meta name="keywords" content="{% if current_node.self_fields.keywords %}{{ current_node.self_fields.keywords }}{% else %}{{ current_node.get_full_keywords|safe }}{% endif %}">
 
 		<link rel="stylesheet" type="text/css" href="{% static 'css/style.base.css' %}">
+	    <link rel="stylesheet" type="text/css" href="{% static 'css/flexslider.css' %}">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	    <script type="text/javascript" src="{% static 'js/jquery.flexslider-min.js' %}"></script>
 
 		{% block extrahead %}{% endblock %}
 
@@ -24,6 +27,31 @@
 				<a href="/" class="logo"><img src="{% static 'images/logo.png' %}" alt="Триада-тв" /></a>
 
 				<div class="top">
+					<div class="top_promo" >
+		                <ul class="slides">
+		                    {% for tpromo in head_promo %}<li>
+		                        {% if tpromo.photo %}
+		                            {% if tpromo.url %}
+		                                <a href="{{ tpromo.url }}"><div class="top-slide-description" style="background: url('{{ tpromo.photo.path|thumbnail:"175x75,crop" }}');">{{ tpromo.description|safe }}</div></a>
+		                            {% else %}
+		                                <div class="top-slide-description" style="background: url('{{ tpromo.photo.path|thumbnail:"175x75,crop" }}');">{{ tpromo.description|safe }}</div>
+		                            {% endif %}
+		                        {% endif %}
+		                    </li>{% endfor %}
+		                </ul>
+					</div>
+		            <script type="text/javascript" charset="utf-8">
+		                $(window).load(function() {
+		                    $('.top_promo').flexslider({
+		                        namespace: "top_promo-",
+                        		animation: "slide",
+    							controlNav: false,
+		                        slideshowSpeed: 12000,
+		                        pauseOnAction: false,
+		                        directionNav: false,
+		                    });
+		                });
+		            </script>
 	            	<div class="slogan">Производство оборудования для теле- и радиовещания</div>
 
 					{% include 'includes/menu.html' %}

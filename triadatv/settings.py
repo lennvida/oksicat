@@ -85,7 +85,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     # 'django.contrib.messages.context_processors.messages',
 
-    # 'triadatv.core.context_processors.promo',
+    'triadatv.core.context_processors.promo',
     'triadatv.structure.context_processors.current_node',
     'triadatv.structure.context_processors.site_name',
 )
