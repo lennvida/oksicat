@@ -13,7 +13,7 @@
 			<tbody>{% for topic in topic_list %}
 				<tr>
 					<td class="opt05 fs14">{{ forloop.counter }}</td>
-					<td><a href="{{ topic.get_absolute_url }}">{{ topic.title|slice:":60" }}...</a></td>
+					<td><a href="{{ topic.get_absolute_url }}">{{ topic.title|slice:":60"|safe }}...</a></td>
 				</tr>
 			{% endfor %}</tbody>
 		</table>

@@ -11,7 +11,7 @@
 		<div class="comment_list" id="comment_to_{{ topic.id }}">
 			{% for comment in topic.message_set.all %}<div class="comment" id="{{ comment.id }}">
 				<p>{{ comment.name }} <span class="date">{{ comment.datetime }}</span></p>
-				<div class="text">{{ comment.text }}</div>
+				<div class="text">{{ comment.text|safe }}</div>
 			</div>{% endfor %}
 		</div>
 		<form method="post">
