@@ -142,6 +142,7 @@ INSTALLED_APPS = (
     'triadatv.forum',
     'triadatv.catalog',
     'triadatv.core',
+    'triadatv.feedback',
     'triadatv.map',
     'triadatv.news',
     'triadatv.structure',
@@ -269,3 +270,6 @@ ADMIN_TOOLS_THEMING_CSS = 'css/admin.css'
 ADMIN_TOOLS_MENU = 'triadatv.menu.CustomMenu'
 ADMIN_TOOLS_INDEX_DASHBOARD = 'triadatv.dashboard.CustomIndexDashboard'
 ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'triadatv.dashboard.CustomAppIndexDashboard'
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025

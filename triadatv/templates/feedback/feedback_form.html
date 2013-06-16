@@ -1,0 +1,21 @@
+{% extends "layer_01.html" %}
+
+{% load static from staticfiles %}
+
+{% block content %}
+	<div class="content">{{ current_node.content|safe }}</div>
+	<div>
+		<form method="post">
+			<fieldset>
+				<dl>
+				{% for field in form %}
+					<dt>{{ field.label }}</dt>
+					<dd>{{ field }}</dd>
+					{% if field.errors %}{{ field.errors }}{% endif %}
+				{% endfor %}
+				</dl>
+				<input type="submit" value="Отправить">
+			</fieldset>
+		</form>
+	</div>
+{% endblock %}

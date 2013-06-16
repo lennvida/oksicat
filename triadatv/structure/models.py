@@ -55,7 +55,7 @@ class StructureNode(models.Model):
     title = models.CharField(u'заголовок страницы', max_length=200)
     menu = models.CharField(u'навигация', max_length=200, help_text=u'название пункта меню')
     menu_visible = models.BooleanField(u'навигация', default=True, help_text=(u'отображать эту страницу в меню навигации'))
-    content = tnmc_model.HTMLField(u'текст', blank=True)
+    content = models.TextField(u'текст', blank=True)
     header_image = models.ImageField(u'картинка для шапки', upload_to='upload/structure/header', null=True, blank=True)
     parent = models.ForeignKey('self', null=True, blank=True, related_name='children')
     template = models.CharField(u'шаблон', max_length=100, choices=get_template_choices(), default='default.html')

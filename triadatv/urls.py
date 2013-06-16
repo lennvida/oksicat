@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^forum/', include('triadatv.forum.urls')),
     url(r'^map/', include('triadatv.map.urls')),
     url(r'^news/', include('triadatv.news.urls')),
+    url(r'^contacts/feedback/', include('triadatv.feedback.urls')),
 
     url(r'^admin_tools/', include('admin_tools.urls')),
     url(r'^admin/', include(admin.site.urls)),
