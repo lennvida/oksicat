@@ -63,6 +63,7 @@ class CustomIndexDashboard(Dashboard):
                 models=(
                     'triadatv.core.models.*',
                     'triadatv.structure.models.*',
+                    'triadatv.feedback.models.*',
                 ),
             )
         )
