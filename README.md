@@ -14,7 +14,7 @@ Install
 
 	virtualenv .
 	source bin/activate
-	pip install ir reqs.txt
+	pip install -r reqs.txt
 	./manage.py syncdb
 	./manage.py migrate
 
